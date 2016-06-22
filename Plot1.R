@@ -6,9 +6,12 @@ NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
 ##Total emmissions for each year
-Pollution <- tapply(NEI$Emissions, NEI$year, sum, na.rm = TRUE)
-Year <- unique(NEI$year)
-Total.Pollution <- as.data.frame(cbind(Pollution, Year))
+Total.Pollution <- by(NEI$Emissions, NEI$year, sum)
+
+##Original solution
+#   Pollution <- tapply(NEI$Emissions, NEI$year, sum, na.rm = TRUE)
+#   Year <- unique(NEI$year)
+#   Total.Pollution <- as.data.frame(cbind(Pollution, Year))
 
 ##Plot
 png("plot1.png", width = 480, height = 480)
