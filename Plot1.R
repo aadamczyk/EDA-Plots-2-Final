@@ -8,6 +8,9 @@ SCC <- readRDS("Source_Classification_Code.rds")
 ##Total emmissions for each year
 Total.Pollution <- by(NEI$Emissions, NEI$year, sum)
 
+#   #Could also use
+#   Total.Pollution <- aggregate(Emissions ~ year, data = NEI, sum)
+
 ##Original solution
 #   Pollution <- tapply(NEI$Emissions, NEI$year, sum, na.rm = TRUE)
 #   Year <- unique(NEI$year)

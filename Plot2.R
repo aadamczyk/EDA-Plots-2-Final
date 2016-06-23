@@ -8,6 +8,9 @@ SCC <- readRDS("Source_Classification_Code.rds")
 ##Subset out Baltimore data
 Balt <- subset(NEI, NEI$fips == 24510)
 
+#   #Could also use
+#   Total.Pollution <- aggregate(Emissions ~ year, data = Balt, sum)
+
 ##Total emmissions for each year
 Pollution <- tapply(Balt$Emissions, Balt$year, sum, na.rm = TRUE)
 Year <- unique(Balt$year)
